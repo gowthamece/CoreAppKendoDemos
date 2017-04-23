@@ -27,7 +27,7 @@ namespace MyCoreAPI.Controllers
                 _TechList.Add(new TechnologyList(2, "ADO.NET"));
                 _TechList.Add(new TechnologyList(3, "SilverLight"));
                 _TechList.Add(new TechnologyList(4, "C#"));
-                _TechList.Add(new TechnologyList(5, "MS SQL Server"));
+                _TechList.Add(new TechnologyList(5, "SQL Server"));
                 
 
                 //return Request.CreateResponse(HttpStatusCode.OK, _TechList, Configuration.Formatters.JsonFormatter);
