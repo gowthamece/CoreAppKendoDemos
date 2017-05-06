@@ -36,7 +36,7 @@ namespace MyCoreAPI.Controllers
             }
             catch (Exception ex)
             {
-                List < TechnologyList > _Tech= null;
+                List <TechnologyList> _Tech= null;
                 return _Tech;
             }
         }
