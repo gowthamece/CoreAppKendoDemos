@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kendo UI Snippet</title>
+
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.2.504/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.2.504/styles/kendo.rtl.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.2.504/styles/kendo.silver.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.2.504/styles/kendo.mobile.all.min.css" />
+
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2017.2.504/js/kendo.all.min.js"></script>
+</head>
+<body>
+
+    <div id="listView"></div>
+    <script>
+var dataSource = new kendo.data.DataSource({
+ // data: [ { name: "Jane Doe" }, { name: "John Doe" }]
+    transport: {
+        read: {
+            url: "http://localhost:11207/api/Technologies/TechnologiesList",
+            dataType: "json" // "jsonp" is required for cross-domain requests; use "json" for same-domain requests
+        },confi
+});
+$("#listView").kendoListView({
+     dataSource: dataSource,
+     template: "<div>#:text#</div>",
+     autoBind: false
+ });
+dataSource.read(); // "read()" will fire the "change" event of the dataSource and the widget will be bound
+    </script>
+</body>
+</html>
