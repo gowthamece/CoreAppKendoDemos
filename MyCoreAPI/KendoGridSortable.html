@@ -1,0 +1,88 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="http://demos.telerik.com/kendo-ui/sortable/integration-grid">
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.material.mobile.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2017.3.913/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.913/js/kendo.all.min.js"></script>
+
+
+</head>
+<body>
+
+
+    <div id="example">
+        <div id="grid"></div>
+
+        <script>
+                $(document).ready(function() {
+
+				
+                    var grid = $("#grid").kendoGrid({
+                        dataSource: {
+                            type: "json",
+                            transport: {
+                                read: "http://github-ci-staging.azurewebsites.net/api/Technologies/TechnologiesList"
+                            },  
+                            schema: {
+                                model: {
+                                    fields: {
+                                        value: { type: "number" },
+                                        text: { type: "string" },
+
+                                    }
+                                }
+                            },
+
+                        },
+                        scrollable: true,
+                        columns: [
+
+                            { field: "value", title: "S No", width: "130px" },
+                            { field: "text", title: "Technology", width: "130px" },
+
+                        ]
+                    }).data("kendoGrid");
+                    grid.table.kendoSortable({
+                        filter: ">tbody >tr",
+                        hint: $.noop,
+                        cursor: "move",
+                        autoScroll: true,
+                        placeholder: function(element) {
+                            return element.clone().addClass("k-state-hover").css("opacity", 0.65);
+                        },
+                        container: "#grid tbody",
+                        change: function(e) {
+                            var skip = grid.dataSource.skip(),
+                                oldIndex = e.oldIndex + skip,
+                                newIndex = e.newIndex + skip,
+                                data = grid.dataSource.data(),
+                                dataItem = grid.dataSource.getByUid(e.item.data("uid"));
+                                grid.dataSource.remove(dataItem);
+                                grid.dataSource.insert(newIndex, dataItem);
+                        }
+                    });
+                });
+        </script>
+
+        <style>
+            .k-grid tbody tr {
+                cursor: move;
+            }
+        </style>
+    </div>
+
+
+</body>
+</html>

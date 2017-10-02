@@ -8,6 +8,7 @@ using MyCoreAPI.Model;
 using System.Net.Http;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace MyCoreAPI.Controllers
 {
@@ -18,7 +19,7 @@ namespace MyCoreAPI.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("TechnologiesList")]
-        public List<TechnologyList> GetTechnology()
+        public string GetTechnology()
         {
             try
             {
@@ -28,16 +29,18 @@ namespace MyCoreAPI.Controllers
                 _TechList.Add(new TechnologyList(3, "SilverLight"));
                 _TechList.Add(new TechnologyList(4, "C#"));
                 _TechList.Add(new TechnologyList(5, "SQL Server"));
-                
+
 
                 //return Request.CreateResponse(HttpStatusCode.OK, _TechList, Configuration.Formatters.JsonFormatter);
-                return _TechList;
+                // return callback=;
 
+                var json = JsonConvert.SerializeObject(new { callback = _TechList });
+                return json;
             }
             catch (Exception ex)
             {
-                List <TechnologyList> _Tech= null;
-                return _Tech;
+                //List <TechnologyList> _Tech= null;
+                return "";
             }
         }
     }
