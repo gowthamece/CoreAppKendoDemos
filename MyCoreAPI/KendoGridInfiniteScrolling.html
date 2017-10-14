@@ -28,14 +28,14 @@
         <script>
                 $(document).ready(function() {
 
-				
+
                     var grid = $("#grid").kendoGrid({
                         dataSource: {
                             type: "json",
                             transport: {
                                //read: "http://github-ci-staging.azurewebsites.net/api/Technologies/TechnologiesList"
                                 read: "http://localhost:11207/api/Technologies/TechnologiesList"
-                            },  
+                            },
                             schema: {
                                 model: {
                                     fields: {
@@ -48,7 +48,7 @@
                             pageSize: 20,
 
                         },
-                        scrollable: { endless: true },
+                        scrollable: { endless: true }, // Enabling the kendo Endless scrollable 
                         pageable: {
                             numeric: false,
                             previousNext: false,
@@ -64,6 +64,8 @@
 
                         ]
                     }).data("kendoGrid");
+
+                    //Kendo Sortable Control 
                     grid.table.kendoSortable({
                         filter: ">tbody >tr",
                         hint: $.noop,

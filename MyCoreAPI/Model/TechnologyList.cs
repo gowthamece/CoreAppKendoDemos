@@ -7,13 +7,13 @@ namespace MyCoreAPI.Model
 {
     public class TechnologyList
     {
-        public TechnologyList(int Value, string Text)
+        public TechnologyList(int value, string text)
         {
 
-            this.Value = Value;
-            this.Text = Text;
+            this.value = value;
+            this.text = text;
         }
-        public int Value { get; set; }
-        public string Text { get; set; }
+        public int value { get; set; }
+        public string text { get; set; }
     }
 }

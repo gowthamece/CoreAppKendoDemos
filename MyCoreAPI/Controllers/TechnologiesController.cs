@@ -19,28 +19,31 @@ namespace MyCoreAPI.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("TechnologiesList")]
-        public string GetTechnology()
+        public List<TechnologyList> GetTechnology()
         {
             try
             {
                  List<TechnologyList> _TechList = new List<TechnologyList>();
-                _TechList.Add(new TechnologyList(1, "ASP.NET"));
-                _TechList.Add(new TechnologyList(2, "ADO.NET"));
-                _TechList.Add(new TechnologyList(3, "SilverLight"));
-                _TechList.Add(new TechnologyList(4, "C#"));
-                _TechList.Add(new TechnologyList(5, "SQL Server"));
-
-
+                for (int i = 1; i <= 10000; i++)
+                {
+                    _TechList.Add(new TechnologyList(i, "ASP.NET"));
+                    _TechList.Add(new TechnologyList(i+1, "ADO.NET"));
+                    _TechList.Add(new TechnologyList(i+2, "SilverLight"));
+                    _TechList.Add(new TechnologyList(i+3, "C#"));
+                    _TechList.Add(new TechnologyList(i+4, "SQL Server"));
+                    i = i + 4;
+                }
+        
                 //return Request.CreateResponse(HttpStatusCode.OK, _TechList, Configuration.Formatters.JsonFormatter);
                 // return callback=;
 
-                var json = JsonConvert.SerializeObject(new { callback = _TechList });
-                return json;
+               // var json = JsonConvert.SerializeObject(new { callback = _TechList });
+                return _TechList;
             }
             catch (Exception ex)
             {
-                //List <TechnologyList> _Tech= null;
-                return "";
+                List <TechnologyList> _Tech= null;
+                return _Tech;  
             }
         }
     }
