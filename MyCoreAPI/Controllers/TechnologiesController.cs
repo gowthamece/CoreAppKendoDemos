@@ -23,27 +23,54 @@ namespace MyCoreAPI.Controllers
         {
             try
             {
-                 List<TechnologyList> _TechList = new List<TechnologyList>();
+                List<TechnologyList> _TechList = new List<TechnologyList>();
                 for (int i = 1; i <= 10000; i++)
                 {
                     _TechList.Add(new TechnologyList(i, "ASP.NET"));
-                    _TechList.Add(new TechnologyList(i+1, "ADO.NET"));
-                    _TechList.Add(new TechnologyList(i+2, "SilverLight"));
-                    _TechList.Add(new TechnologyList(i+3, "C#"));
-                    _TechList.Add(new TechnologyList(i+4, "SQL Server"));
+                    _TechList.Add(new TechnologyList(i + 1, "ADO.NET"));
+                    _TechList.Add(new TechnologyList(i + 2, "SilverLight"));
+                    _TechList.Add(new TechnologyList(i + 3, "C#"));
+                    _TechList.Add(new TechnologyList(i + 4, "SQL Server"));
                     i = i + 4;
                 }
-        
+
                 //return Request.CreateResponse(HttpStatusCode.OK, _TechList, Configuration.Formatters.JsonFormatter);
                 // return callback=;
 
-               // var json = JsonConvert.SerializeObject(new { callback = _TechList });
+                // var json = JsonConvert.SerializeObject(new { callback = _TechList });
                 return _TechList;
             }
             catch (Exception ex)
             {
-                List <TechnologyList> _Tech= null;
-                return _Tech;  
+                List<TechnologyList> _Tech = null;
+                return _Tech;
+            }
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("TechnologiesLimitedList")]
+        public List<TechnologyList> GetLimitedTechnology()
+        {
+            try
+            {
+                List<TechnologyList> _TechList = new List<TechnologyList>();
+                for (int i = 1; i <= 70; i++)
+                {
+                    _TechList.Add(new TechnologyList(i, "ASP.NET"));
+                    _TechList.Add(new TechnologyList(i + 1, "ADO.NET"));
+                    _TechList.Add(new TechnologyList(i + 2, "SilverLight"));
+                    _TechList.Add(new TechnologyList(i + 3, "C#"));
+                    _TechList.Add(new TechnologyList(i + 4, "SQL Server"));
+                    i = i + 4;
+                }
+
+
+                return _TechList;
+            }
+            catch (Exception ex)
+            {
+                List<TechnologyList> _Tech = null;
+                return _Tech;
             }
         }
     }
