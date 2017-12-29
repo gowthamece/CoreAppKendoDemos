@@ -47,6 +47,7 @@
 
                 $("#treeview").kendoTreeView({
                     dataSource: homogeneous,
+                    dragAndDrop: true,
                     dataTextField: ["name"],
                     checkboxes: {
                         checkChildren: true
@@ -58,7 +59,7 @@
                         treeView.expand(".k-item");
                     }
             });
-
+                
                 function checkedNodeIds(nodes, checkedNodes) {
                     for (var i = 0; i < nodes.length; i++) {
                         if (nodes[i].checked) {
