@@ -25,6 +25,9 @@
             </div>
 
             <div id="treeview"></div>
+            <div>
+                <button id="btnAuto" class="k-button">Expand</button>
+            </div>
             <!--<div>
                 <p id="result">No nodes checked.</p>
             </div>-->
@@ -53,17 +56,19 @@
                         checkChildren: true
                     },
                     check: onCheck,
-                    dataBound: function (e)
-                    {
-                        var treeView = $('#treeview').data('kendoTreeView');
-                        treeView.expand(".k-item");
-                    }
+                    //dataBound: function (e)
+                    //{
+                    //    var treeView = $('#treeview').data('kendoTreeView');
+                    //    treeView.expand(".k-item");
+                        
+                    //}
             });
                 
                 function checkedNodeIds(nodes, checkedNodes) {
+                    debugger;
                     for (var i = 0; i < nodes.length; i++) {
-                        if (nodes[i].checked) {
-                            checkedNodes.push(nodes[i].name);
+                        if (nodes[i].name =="Automobiles") {
+                            checkedNodes.push(nodes[i].data);
 
                         }
 
@@ -74,7 +79,8 @@
                 }
 
                 // show checked node IDs on datasource change
-                function onCheck() {
+                function onCheck()
+                {
                     var checkedNodes = [],
                         treeView = $("#treeview").data("kendoTreeView"),
                         message;
@@ -89,8 +95,35 @@
 
                     $("#result").html(message);
                 }
+                $('#btnAuto').click(function () {
+                   
+                    var treeview = $('#treeview').data('kendoTreeView');
+                    var nodeElement = treeview.dataSource.view();
+                    for (var i = 0; i < nodeElement.length; i++) {
+                        if (nodeElement[i].name == "Automobiles") {
+                            var u_id = nodeElement[i].uid;
+                            var nodeElement_test = $("#treeview").find('li[data-uid=' + u_id + ']');
+                            var node = treeview.findByUid(u_id);
+                            treeview.expand(node);
+                            if (nodeElement[i].hasChildren) {
+                                childNodeExpand(nodeElement[i].children.view());
+                            }
+                        }
+                    }
+                });
 
-               
+                function childNodeExpand(childNodes) {
+                 
+                    var treeview = $('#treeview').data('kendoTreeView');
+                    for (var i = 0; i < childNodes.length; i++) {
+                        if (childNodes[i].name == "Bus") {
+                            var u_id = childNodes[i].uid;
+                            var nodeElement_test = $("#treeview").find('li[data-uid=' + u_id + ']');
+                            var node = treeview.findByUid(u_id);
+                            treeview.expand(node);
+                        }
+                    }
+                }
         </script>
     </div>
 </body>
