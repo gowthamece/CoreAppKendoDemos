@@ -52,10 +52,10 @@ namespace MyCoreAPI
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), "JS")),
+              Path.Combine(Directory.GetCurrentDirectory(), "JS")),
                 RequestPath = "/JS"
             });
-          
+
 
             app.UseMvc();
         }
