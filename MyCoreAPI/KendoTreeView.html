@@ -1,7 +1,7 @@
 ﻿
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
     <style>
         html {
             font-size: 14px;
@@ -9,14 +9,28 @@
         }
     </style>
     <title></title>
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common-material.min.css" />
+    <!--<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common-material.min.css" />
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.min.css" />
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.mobile.min.css" />
 
     <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/jquery.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
+    <div id="example" >
+
+    </div>
+
+         <br />
+    <br />
+<script>
+    $(document).read(function () {
+        $("#example").html("<p> Testing CDN </p>");
+    })
+   
+</script>
     <div id="example">
         <div class="demo-section k-content">
             <div class="k-content">
@@ -27,7 +41,7 @@
             <div id="treeview"></div>
             <div>
                 <button id="btnAuto" class="k-button">Expand</button>
-            </div>
+            </div>z
             <!--<div>
                 <p id="result">No nodes checked.</p>
             </div>-->
