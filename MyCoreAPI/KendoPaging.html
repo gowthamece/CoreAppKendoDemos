@@ -27,14 +27,11 @@
 
         <script>
                 $(document).ready(function() {
-
-
                     var grid = $("#grid").kendoGrid({
                         dataSource: {
                             type: "json",
                             transport: {
                                read: "http://github-ci-staging.azurewebsites.net/api/Technologies/TechnologiesLimitedList"
-                               
                             },
                             schema: {
                                 model: {
