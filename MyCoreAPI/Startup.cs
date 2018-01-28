@@ -49,12 +49,12 @@ namespace MyCoreAPI
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-              Path.Combine(Directory.GetCurrentDirectory(), "JS")),
-                RequestPath = "/JS"
-            });
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //  Path.Combine(Directory.GetCurrentDirectory(), "JS")),
+            //    RequestPath = "/JS"
+            //});
 
 
             app.UseMvc();
