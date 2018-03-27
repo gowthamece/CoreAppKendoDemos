@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <base href="http://demos.telerik.com/kendo-ui/sortable/integration-grid">
+    
     <style>
         html {
             font-size: 14px;
@@ -20,7 +20,7 @@
 </head>
 <body>
 
-
+    <h4>Kendo Grid with Custom Editor</h4>
     <div id="example">
         <div id="grid"></div>
 
@@ -40,7 +40,7 @@
                                 model: {
                                     fields: {
                                         value: { type: "number" },
-                                        Category: { defaultValue: { CategoryID: 1, CategoryName: "Programming"} },
+                                        category: { defaultValue: { categoryID: 1, categoryName: "Programming"} },
                                         text: { type: "string" },
 
                                     }
@@ -59,7 +59,7 @@
                         columns: [
 
                             { field: "value", title: "S No", width: "130px" },
-							{ field: "Category", title: "Category", width: "180px", editor: categoryDropDownEditor, template: "#=Category.CategoryName#" },
+							{ field: "category", title: "Category", width: "180px", editor: categoryDropDownEditor, template: "#=category.categoryName#" },
                             { field: "text", title: "Technology", width: "130px" },
 
                         ]
@@ -73,8 +73,8 @@
                         .appendTo(container)
                         .kendoDropDownList({
 
-                            dataTextField: "CategoryName",
-                            dataValueField: "CategoryID",
+                            dataTextField: "categoryName",
+                            dataValueField: "categoryID",
                             dataSource: {
                                 type: "json",
                                 transport: {

@@ -8,17 +8,66 @@
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.1.117/styles/kendo.rtl.min.css">
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.1.117/styles/kendo.default.min.css">
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.1.117/styles/kendo.mobile.all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/1.3.1/css/toastr.css" />
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/1.3.1/js/toastr.js"></script>
+
     <script src="https://kendo.cdn.telerik.com/2018.1.117/js/angular.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.1.117/js/jszip.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.1.117/js/kendo.all.min.js"></script>
-    <script src="http://localhost:11207/JS/autocomplete.js"></script>
+    <!--<script src="http://localhost:11207/JS/autocomplete.js"></script>-->
+    <script src="https://autocompletefilter.azureedge.net/js-resource/autocomplete.js"></script> <!-- Azure CDN -->
 
 </head>
 
 <body>
-  
     <input id="autocomplete" />
+    <br />
+    <br />
+    <button id="btnClick" class="k-button">Click Me</button><label id="message"></label>
+    <ul id="ulMessage">
+        <li >
+            <a href="#">Item 1</a>
+        </li>
+        <li>
+            <a href="#">Item 2</a>
+        </li>
+    </ul>
+    <script>
+        jQuery.fn.exists = function () { return this.length > 0; }
+
+        $("#btnClick").click(function () {
+            var autoComplete = $("#autocomplete");
+            var message = $("#message");
+          
+            if (autoComplete.exists()) {
+                message.text("Element Exists in DOM").addClass("exist")
+            }
+            else {
+                
+                message.text("Element Doesn't Exists in DOM").addClass("notExist")
+            }
+
+
+        });
+        $("a").on("click", function (e) {
+            e.preventDefault();
+            toastr.success("event fired");
+        })
+
+    </script>
+    <style>
+        #message {
+            margin-left:10px;
+        }
+        
+        .exist{
+            color:green
+        }
+        .notExist{
+            color:red
+        }
+    </style>
 </body>
+
 </html>

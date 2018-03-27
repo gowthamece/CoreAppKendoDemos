@@ -21,6 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\HTML\kendoAutoComplete.html" />
+    <None Include="wwwroot\HTML\KendoGridDropDown.html" />
     <None Include="wwwroot\JS\autocomplete.js" />
   </ItemGroup>
 

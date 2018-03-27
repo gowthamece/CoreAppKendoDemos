@@ -106,10 +106,9 @@ namespace MyCoreAPI.Controllers
             {
                 List<Category> categories = new List<Category>();
                 categories.Add(new Category { CategoryID = 1, CategoryName = "Programming" });
-                categories.Add(new Category { CategoryID = 2, CategoryName = "Programming" });
-                categories.Add(new Category { CategoryID = 3, CategoryName = "Web Technology" });
-                categories.Add(new Category { CategoryID = 4, CategoryName = "Client Side Scripting" });
-                categories.Add(new Category { CategoryID = 5, CategoryName = "Cloud" });
+                categories.Add(new Category { CategoryID = 2, CategoryName = "Web Technology" });
+                categories.Add(new Category { CategoryID = 3, CategoryName = "Client Side Scripting" });
+                categories.Add(new Category { CategoryID = 4, CategoryName = "Cloud" });
                 return categories;
             }
             catch (Exception ex)
