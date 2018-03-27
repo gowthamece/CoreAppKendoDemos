@@ -73,5 +73,51 @@ namespace MyCoreAPI.Controllers
                 return _Tech;
             }
         }
+
+        [HttpGet]
+        [Route("GetTechList")]
+
+        public List<TechnologyList> GetTech()
+        {
+            try
+            {
+                List<TechnologyList> _TechList = new List<TechnologyList>();
+
+                _TechList.Add(new TechnologyList(1, "C#", new Category { CategoryID = 1, CategoryName = "Programming" }));
+                _TechList.Add(new TechnologyList(2, "F#", new Category { CategoryID = 2, CategoryName = "Programming" }));
+                _TechList.Add(new TechnologyList(3, "HTML", new Category { CategoryID = 3, CategoryName = "Web Technology" }));
+                _TechList.Add(new TechnologyList(4, "JavaScript", new Category { CategoryID = 4, CategoryName = "Client Side Scripting" }));
+                _TechList.Add(new TechnologyList(5, "Azure", new Category { CategoryID = 5, CategoryName = "Cloud" }));
+                return _TechList;
+            }
+            catch (Exception ex)
+            {
+                List<TechnologyList> _Tech = null;
+                return _Tech;
+            }
+        }
+
+        [HttpGet]
+        [Route("GetCategory")]
+
+        public List<Category> GetCategories()
+        {
+            try
+            {
+                List<Category> categories = new List<Category>();
+                categories.Add(new Category { CategoryID = 1, CategoryName = "Programming" });
+                categories.Add(new Category { CategoryID = 2, CategoryName = "Programming" });
+                categories.Add(new Category { CategoryID = 3, CategoryName = "Web Technology" });
+                categories.Add(new Category { CategoryID = 4, CategoryName = "Client Side Scripting" });
+                categories.Add(new Category { CategoryID = 5, CategoryName = "Cloud" });
+                return categories;
+            }
+            catch (Exception ex)
+            {
+                List<Category> categories = null;
+                return categories;
+            }
+        }
     }
+    
 }
