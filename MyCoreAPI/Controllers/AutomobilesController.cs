@@ -55,5 +55,35 @@ namespace MyCoreAPI.Controllers
 
       
         }
+
+        [HttpGet]
+        [Route("DropDownDataSource")]
+        public JsonResult DropDownDataSource()
+        {
+            var obj = new[]
+            {
+                new {
+                text = "Automobiles",
+                expanded= true,
+                items = new[] {
+                new {
+                    text = "Bus",
+                    
+                   
+                    },
+
+                new {
+                    text = "Car"
+                    
+                    
+                },
+            },
+
+                },
+            };
+            return Json(obj);
+
+
+        }
     }
 }
