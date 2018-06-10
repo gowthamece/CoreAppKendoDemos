@@ -13,25 +13,9 @@ namespace MyCoreAPI.Controllers
     [Route("api/Employees")]
     public class EmployeesController : Controller
     {
-        //[HttpGet]
-        //[AllowAnonymous]
-        ////[Route("GetEmployee")]
-        //[Route("Empdetails")]
-        //public List<Employee> GetEmployee()
-        //{
-        //    List<Employee> employees = new List<Employee>();
-
-        //    employees.Add(new Employee(1, "Arun", true, null));
-        //    employees.Add(new Employee(2, "Pradeep", false,1));
-        //    employees.Add(new Employee(3, "Gowtham", true, null));
-        //    employees.Add(new Employee(4, "Raj", false, 3));
-        //    return employees.Where(e=>!e.ReportsTo.HasValue).ToList();
-
-        //}
-
+     
         [HttpGet]
-        [AllowAnonymous]
-        //[Route("GetEmployee")]
+        [AllowAnonymous]       
         [Route("Empdetails")]
         public List<Employee> GetEmployees(int? EmployeeId)
         {
