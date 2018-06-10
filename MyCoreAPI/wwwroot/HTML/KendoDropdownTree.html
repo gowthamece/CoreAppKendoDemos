@@ -90,12 +90,11 @@
             <input id="dropdowntree" style="width: 100%;" />
         </div>
         <script>
-
-            <br class="Apple-interchange-newline">      
+           
             homogeneous = new kendo.data.HierarchicalDataSource({
                 transport: {
                     read: {
-                        url: "http://github-ci-staging.azurewebsites.net/api/Employees/Empdetails",
+                        url: "http://localhost:11207/api/Employees/Empdetails",
                         dataType: "json"
                     }
                 },
