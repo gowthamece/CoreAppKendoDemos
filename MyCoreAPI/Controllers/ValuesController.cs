@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.Services.AppAuthentication;
 
 namespace MyCoreAPI.Controllers
 {
@@ -39,6 +42,18 @@ namespace MyCoreAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("GetSecrete")]
+        public async  Task<JsonResult> GetSecrete()
+        {
+            AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+            var keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+            var secret = await keyVaultClient.GetSecretAsync("https://mykeyvaultsample.vault.azure.net/secrets/mySecrete").ConfigureAwait(false);
+
+            return Json(secret.Value);
+
         }
     }
 }
