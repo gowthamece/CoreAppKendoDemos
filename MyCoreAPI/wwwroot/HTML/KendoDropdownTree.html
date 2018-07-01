@@ -87,7 +87,15 @@
     <br />
     <div id="example">
         <div class="demo-section k-content">
-            <input id="dropdowntree" style="width: 100%;" />
+            <input id="dropdowntree" style="width: 50%;" />
+        </div>
+
+        <hr style="margin-top:40px"/>
+        <h3>Selected Item(s)</h3>
+        <div>
+            <ul  id="listItem">
+
+            </ul>
         </div>
         <script>
            
@@ -110,8 +118,21 @@
                 placeholder: "Select ...",
                 dataSource: homogeneous,
                 height: "auto",
+                checkboxes: true,
+                change: onChange,
                 dataTextField: "name"
             });
+            function onChange(e) {
+                debugger;
+                var listItem = $("#listItem");
+                if (typeof ('#listItem li') != undefined) {
+                    $("#listItem ").find('li').remove()
+                }
+                $.each(e.sender._values, function(key,value)
+                {
+                    listItem.append("<li>" + value.name + "</li>");
+                })
+            }
         </script>
     </div>
 
