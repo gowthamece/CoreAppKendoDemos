@@ -64,7 +64,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="https://demos.telerik.com/kendo-ui/dropdowntree/remote-data-binding">
+   
     <style>
         html {
             font-size: 14px;
@@ -90,19 +90,33 @@
             <input id="dropdowntree" style="width: 50%;" />
         </div>
 
-        <hr style="margin-top:40px"/>
+        <hr style="margin-top:40px" />
         <h3>Selected Item(s)</h3>
         <div>
-            <ul  id="listItem">
-
-            </ul>
+            <ul id="listItem"></ul>
         </div>
+        <script id="dropdowntree-value-template" type="text/kendo-ui-template">
+
+            <span style="color:blueviolet"> #: data.name # </span>
+
+        </script>
+        <script id="dropdowntree-template" type="text/kendo-ui-template">
+            
+           #if(item.hasEmployees)
+            {#
+            <span style="color:darkred">#: item.name #</span>
+            #}
+            else
+            {#
+            <span style="color:lightcoral">#: item.name #</span>
+            #}#
+        </script>
         <script>
-           
+
             homogeneous = new kendo.data.HierarchicalDataSource({
                 transport: {
                     read: {
-                        url: "http://localhost:11207/api/Employees/Empdetails",
+                        url: "http://github-ci-staging.azurewebsites.net/api/Employees/Empdetails",
                         dataType: "json"
                     }
                 },
@@ -118,7 +132,8 @@
                 placeholder: "Select ...",
                 dataSource: homogeneous,
                 height: "auto",
-                checkboxes: true,
+                template: kendo.template($("#dropdowntree-template").html()),
+                valueTemplate: kendo.template($("#dropdowntree-value-template").html()),
                 change: onChange,
                 dataTextField: "name"
             });
@@ -128,8 +143,7 @@
                 if (typeof ('#listItem li') != undefined) {
                     $("#listItem ").find('li').remove()
                 }
-                $.each(e.sender._values, function(key,value)
-                {
+                $.each(e.sender._values, function (key, value) {
                     listItem.append("<li>" + value.name + "</li>");
                 })
             }
