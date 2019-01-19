@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jquery.min.js"></script>
+</head>
+<body>
+    <label id="myelement"></label>
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "https://myazurefunctiondemo.azurewebsites.net/api/MyFunctionDemo?code=G4RH366GQQWmj9RiXXcYS7Dfe/XKuPmQTUkbkLiLYk3UraXQnPoKpA==",
+                data: JSON.stringify({                
+                    "orderId": "13",
+                    "productId": "13",
+                    "userEmail": "gowthamkk7@gmail.com",
+                    "price": 2000                
+                }),
+                
+                dataType: "json",
+                success: function (response) {
+                    //   console.log(response)
+                },
+            });
+            function my_callback_method(response) {
+                console.log(response);
+            }
+        })
+        //document.getElementById('myelement').innerHTML = '<h3> Welcome </h3>'
+        //var a = 10;
+        //let x = 10;
+        //console.log(window.a);//print 10 in console 
+        //console.log(window.x);//undefined 
+        //var message = "";
+        //for (i = 0; i < 5; i++) {
+        //    message += "The number is " + i + "<br>";
+        //}
+
+        //var employee = { firstName: "John", lastName: "Doe" };
+        //var text = "";
+        //for (var x in employee) {
+        //    text += employee[x];
+        //}
+
+        //var i = 0;
+        //var serialNumber = "";
+        //while (i < 10) {
+        //    serialNumber +=  i;
+        //    i++;
+        //}
+        //console.log(serialNumber);
+
+        //do {
+        //    text += "The number is " + i;
+        //    i++;
+        //}
+        //while (i < 10);
+        //var str = 'hello';
+        //console.log(str);//print hello
+
+        //var temp = new string('Raj'); 
+
+        //var str = 'find me';
+        //str.search('me')
+
+        //var str = 'find me';
+        //str.indexOf('me')
+        //var m = /e/;
+        //var str = "apple";
+        //str.indexOf(m)//return -1 
+        //var m = /e/;
+        //var str = "apple";
+        //str.search(m)//return 4
+
+        //var str = 'Hello find me test me ';
+        //str.lastIndexOf('me') // return 19
+
+        //var x = "hello";
+        //console.log((x.substr(1, 4) == "ello"))
+
+        //var x = "hello";
+        //console.log((x.substring(1, 5) == "ello"))//print true in console
+
+        //var x = "Raj";
+        //var y = new String("Raj");
+        //var result = (x == y)
+        //console.log(result)
+
+        //var x = "Raj";
+        //var y = new String("Raj");
+        //var result = (x === y)
+        //console.log(result)
+
+        //var x = new String("Raj");
+        //var y = new String("Raj");
+        //var result = (x === y)
+        //console.log(result)
+
+        //var x = new String("Raj");
+        //var y = new String("Raj");
+        //var result = (x == y)
+        //console.log(result)
+
+
+        //var customer = { name: 'Raj', age: 25, company: 'ABC' }
+        //// set the value 
+        //customer.name = ‘Arun’
+        ////getting the value 
+        //customer.name;
+        //customer.age;
+
+        //var customer = { name: 'Raj', age: 25, company: 'ABC' }
+        //// set the value 
+        //customer.name = 'Arun';
+        ////getting the value 
+        //customer.name;
+        //customer.age;
+
+        //function Employee(name, company) {
+        //    this.name = name;
+        //    this.company = company;
+        //}
+        
+        //Employee.prototype.Age = 25;
+        //Employee.prototype.getname = function () {
+        //    return this.name;
+        //};
+
+        //var employee = new Employee('Ram', 'XYZ');
+
+        //var myArray = [];
+        //myArray[0] = Date.now;
+
+
+        //var myArray = [];
+        //myArray[0] = Date.now;
+        //myArray[1] = 1;
+        //myArray[2] = "hello";
+
+        //var fruits = new Array('Apple', 'Orange', 'Grapes');
+        //for (var i = 0; i < fruits.length; i++) {
+        //    console.log(fruits[i])
+        //}  
+
+        //var fruits = new Array('Apple', 'Orange', 'Grapes');
+        //fruits.forEach(myFunction);
+        //function myFunction(value) {
+        //    console.log(value)
+        //}
+        //var fruits = new Array('Apple', 'Orange', 'Grapes');
+        //Array.isArray(fruits) // it will returns true 
+
+        //var fruits = new Array('Apple', 'Orange', 'Grapes');
+        //fruits.push('Papaya');
+        //console.log(fruits.toString()); // output : Apple,Orange,Grapes,Papaya 
+
+        //console.log(fruits.toString()); // Apple,Papaya,Orange,Grapes 
+
+        //var fruits = new Array('Apple', 'Orange', 'Grapes');
+        //fruits.splice(1, 1)
+        //console.log(fruits.toString()); // Apple, Grapes
+
+        //Myfunction('onclick', function () {
+        //    //call back fucntion body
+        //});
+
+        //var result add = (a, b) => { return a + b }
+        //console.log(result);  
+        //setTimeout(function () {
+        //    alert("Hello");
+        //}, 3000);
+
+        //var arr1 = ['a', 'b', 'c'];
+        //var arr2 = arr1; 
+
+        //var arr1 = ['a', 'b', 'c'];
+        //var arr2 = arr1.slice();
+
+        //var temp = "Hello";
+        //console.log(temp.toLowerCase());//print hello
+
+        //var temp = "hello";
+        //temp.charAt(1)//return "e"
+
+        //var regex = /ge/;
+        //regex = new RegExp('ge');
+        //regex.exec("burger") = > return ["ge", index: 1, input: "burger"]
+
+        //var patternVar = /o/;
+        //var result = patternVar.test('Hello World');
+        //console.log(result) //It will print true in browser console
+
+        //localStorage.setItem('name', 'value2')  
+
+        //let a = {};
+        //let b = {}; 
+
+        //console.log((a == b));
+        //const employee = {
+        //    firstName: "David"
+        //};
+        //employee.firstName = "Alex"; // yes, this is possible 
+
+        //// does it work?
+        //user.name = "Pete";
+
+        //const employee = {
+        //    firstName: "David"
+        //};
+        //employee = "hello";// this wont work
+
+        //let employee = {
+        //    name: "David",
+        //    age: 30
+        //};
+
+        //function add(a, b) {
+        //    return a + b;
+        //}
+        //add = (a, b) => { return a + b }
+        //console.log(add(1, 2));//3
+
+        //let newObject = {}; // the new empty object
+
+        //// let's copy all user properties into it
+        //for (let key in employee) {
+        //    newObject[key] = employee[key];
+        //}
+
+        //// now clone is a fully independent clone
+        //newObject.name = "Alex";
+        //var fruits = new Array('Apple', 'Orange', 'Grapes');
+        //console.log(typeof (fruits));//object
+
+        //console.log(fruits[0])//Apple
+
+        //alert(user.name); // still John in the original object
+
+        //for (; ;) {
+        //    console.log(1);
+        //}
+        //var str = "burger";
+        //var regex = /ge/i;
+        //regex.search(str)//
+        //var str = "burGEr";
+        //var regex = /ge/i;
+        //str.search(regex)// return 3
+
+        //var str = "burGEr";
+        //var regex = /ge/;
+        //str.search(regex)// return -1 without flag
+
+        //var str = "burGEr";
+        //var regex = /ge/i;
+        //str.search(regex)// return 3
+        
+        //var str = "Test hello Test";
+        //var regex = /Test/g;
+        //var result = str.match(regex);
+        //    console.log(result);// return all "Test" found in a string in the form of array
+
+        //var str = "\nTest hello \nTest \nTest";
+        //var regex = /^Test/m;
+        //var result = str.match(regex);
+        //console.log(result);
+
+        //var str = "\nTest hello \nTest";
+        //var regex = /^Test/gm;
+        //var result = str.match(regex);
+        //console.log(result);
+
+        //let str = "Hello from Dot Net Tricks";
+
+        //let reg = /Dot/iy;
+
+        //console.log(reg.lastIndex); // 0 (default)
+        //console.log(str.match(reg)); // null, not found at position 0
+
+        //reg.lastIndex = 10;
+        //console.log(str.match(reg)) 
+    </script>
+    
+</body>
+</html>

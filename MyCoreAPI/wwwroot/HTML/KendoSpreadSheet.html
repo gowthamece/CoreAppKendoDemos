@@ -1,0 +1,171 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.material.mobile.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/kendo.all.min.js"></script>
+
+
+</head>
+<body>
+    <div id="example">
+        <button id="exportPDF" class="k-button">Export to PDF</button>
+
+        <div id="spreadsheet" style="width: 100%"></div>
+        <script>
+
+            function onRender(e) {
+                console.log("Render Event")
+            }
+            function onSelect(e) {
+                console.log("on select event the cell value ", e.range.value())
+            }
+            function onChange(e) {
+                console.log("on change event the cell value ", e.range.value())
+            }
+            function onPdfExport(e) {
+                console.log("Export to PDF event, file name ", e.options.pdf.fileName)
+            }
+         
+            function onHideColumn(e) {
+                console.log("Hide column event")
+            }
+            function onDeleteColumn(e) {
+                console.log("Delete column event")
+            }
+              
+            function onHideRow(e) {
+                console.log("Hide Row event")
+            }
+            function onDeleteRow(e) {
+                console.log("Delete Row event")
+            }
+            
+
+            $(function () {
+                var dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read: onRead,
+
+                    },
+                    schema: {
+                        model: {
+                            id: "ProductID",
+                            fields: {
+                                productID: { type: "number" },
+                                productName: { type: "string" },
+                                price: { type: "number" },
+                                tax: { type: "number" }
+                            }
+                        }
+                    }
+                });
+
+                $("#spreadsheet").kendoSpreadsheet({
+                    render: onRender,
+                    select: onSelect,
+                    change: onChange,
+                    pdfExport: onPdfExport,                   
+                    hideColumn: onHideColumn,
+                    deleteColumn: onDeleteColumn,                    
+                    unhideRow: onUnhideRow,
+                    hideRow: onHideRow,
+                    deleteRow: onDeleteRow,                    
+                    pdfExport: onPdfExport,
+                    columns: 20,
+                    rows: 100,
+                    toolbar: false,
+                    sheetsbar: false,
+                    sheets: [{
+                        name: "Products",
+                        dataSource: dataSource,
+                        filter: {
+                            ref: "A1:D3",
+                            columns: []
+                        },
+                        rows: [{
+                            height: 40,
+
+                            cells: [
+                                {
+                                    bold: "true",
+                                    background: "#9c27b0",
+                                    textAlign: "center",
+                                    color: "white",
+                                    title: "ID"
+                                }, {
+                                    bold: "true",
+                                    background: "#9c27b0",
+                                    textAlign: "center",
+                                    color: "white",
+                                    title: "Product Name"
+                                }, {
+                                    bold: "true",
+                                    background: "#9c27b0",
+                                    textAlign: "center",
+                                    color: "white",
+                                    title: "Price"
+                                }, {
+                                    bold: "true",
+                                    background: "#9c27b0",
+                                    textAlign: "center",
+                                    color: "white"
+                                },]
+                        }],
+                        columns: [
+                            { width: 100 },
+                            { width: 415 },
+                            { width: 145 },
+                            { width: 145 },
+                            { width: 145 }
+                        ]
+                    }]
+                });
+              
+
+              
+
+                function onRead(options) {
+                    $.ajax({
+                        url: "http://localhost:11207/api/Products/ProductDetails",
+                        dataType: "json",
+                        success: function (result) {
+                            options.success(result);
+                        },
+                        error: function (result) {
+                            options.error(result);
+                        }
+                    });
+                }
+
+
+            });
+
+            $("#exportPDF").on('click', function (e) {
+                exportPDF(e);
+
+            })
+            function exportPDF(e) {
+                var spreadsheet = $("#spreadsheet").data("kendoSpreadsheet");
+                spreadsheet.saveAsPDF({ area: "selection" });
+            }
+             // 
+        </script>
+    </div>
+
+
+</body>
+</html>

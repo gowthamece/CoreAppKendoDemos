@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Untitled</title>
+
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common.min.css">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.rtl.min.css">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.default.min.css">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.mobile.all.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/angular.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/kendo.all.min.js"></script>
+</head>
+<body>
+    <div id="grid"></div>
+    <label id="myelement" ></label>
+    <script>
+        $(document).ready(function () {
+            document.cookie = 'myCookie = cookievalue';
+            document.getElementById('myelement').innerHTML = '<h3> Welcome </h3>'	
+            var x = document.cookie; // This will return all the cookies which is used in the web application which is running 
+            function getCookie(cookiename) {
+                var name = cookiename + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+
+            }
+            var deletecookie = function (name) {
+                document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            };
+            delete_cookie('myCookie');
+
+            console.log(getCookie("myCookie"));// print cookievalue in console 
+
+            var employee = {
+                firstName: "John",
+                lastName: "Davis",
+                fullName: function () {
+                    return this.firstName + " " + this.lastName; // Now this "refers" a current object employee 
+                }
+            };
+
+            console.log(fullName)
+            window.Hello = "Hello World"
+            function globalObjectTest()
+            {
+                console.log(this.Hello);// Now "this" refers a global object 
+            }
+
+            function iterate() {
+                //i is *not* visible out here
+
+                for (let i = 0; i < 5; i++) {
+                    //i is only visible in here (and in the for() parentheses)
+                    //and there is a separate i variable for each iteration of the loop
+                }
+
+                //i is *not* visible out here
+            }
+    function customBoolEditor(container, options) {
+      var guid = kendo.guid();
+      $('<input class="k-checkbox" id="' + guid + '" type="checkbox" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
+      $('<label class="k-checkbox-label" for="' + guid + '">&#8203;</label>').appendTo(container);
+    }
+
+    $("#grid").kendoGrid({
+      toolbar: ["create"],
+      columns: [
+        { field:"CountryId", title: "Id", width: "150px" },
+        { field: "CountryName", title:"Name", width: "110px" },
+
+        { command: ["edit", "destroy"], title: "&nbsp;", width: "190px" }],
+      editable: "popup",
+      dataSource: {
+        batch: false,
+        transport: {
+          read: {
+            url: "https://kendogridfunctions.azurewebsites.net/api/Read?code=/TamlKK/GWdF/5MLx3zT56CeA03h0yumIenLl7QkT4cMX67/FadpwA==",
+            method: "GET"
+          },
+          update: {
+            url: "https://kendogridfunctions.azurewebsites.net/api/Create?code=yb2W5c3PW54oBtlDz7zwCLEARh9omeR/BazaP0w3MVJQFVm/W9UJZQ==",
+            method: "POST"
+          },
+          destroy: {
+            url: "[Destroy Function URL]",
+            method: "POST"
+          },
+          create: {
+            url: "[Create Function URL]",
+            method: "POST"
+          },
+          parameterMap: function(options, operation) {
+            if (operation !== "read" && options) {
+              return kendo.stringify(options);
+            }
+          }
+        },
+        schema: {
+          model: {
+            id: "CountryId",
+            fields: {
+
+                CountryName: { validation: { required: true } },
+
+
+            }
+          }
+        }
+      }
+    });
+  });
+    </script>
+</body>
+</html>
