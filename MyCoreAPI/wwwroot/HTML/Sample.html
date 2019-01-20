@@ -7,28 +7,26 @@
     <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jquery.min.js"></script>
 </head>
 <body>
-    <label id="myelement"></label>
+    <h3> Azure function</h3>
+    <label>Name: </label> <input type="text" id="txtName" />
+    <button id="btnName">Click Me</button>
+    <label id="message" style="color:green"></label>
     <script>
         $(document).ready(function () {
+            $("#btnName").on("click", function () {
+                $.ajax({
+                    type: "POST",
+                    url: "https://myfunctionappdemos.azurewebsites.net/api/HttpTrigger1?code=oRJcOc6j37H9vJKcdZzBRX95wKRsRIhdQaiPiKnNvVvUdgT9i0TYgw==",
+                    data: JSON.stringify({
+                        "name": $("#txtName").val(),
 
-            $.ajax({
-                type: "POST",
-                url: "https://myazurefunctiondemo.azurewebsites.net/api/MyFunctionDemo?code=G4RH366GQQWmj9RiXXcYS7Dfe/XKuPmQTUkbkLiLYk3UraXQnPoKpA==",
-                data: JSON.stringify({                
-                    "orderId": "13",
-                    "productId": "13",
-                    "userEmail": "gowthamkk7@gmail.com",
-                    "price": 2000                
-                }),
-                
-                dataType: "json",
-                success: function (response) {
-                    //   console.log(response)
-                },
-            });
-            function my_callback_method(response) {
-                console.log(response);
-            }
+                    }),
+                    dataType: "json",
+                    success: function (response) {
+                        $("#message").text(response)
+                    },
+            })        
+            });         
         })
         //document.getElementById('myelement').innerHTML = '<h3> Welcome </h3>'
         //var a = 10;
