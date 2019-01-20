@@ -19,11 +19,9 @@
                     url: "https://myfunctionappdemos.azurewebsites.net/api/HttpTrigger1?code=oRJcOc6j37H9vJKcdZzBRX95wKRsRIhdQaiPiKnNvVvUdgT9i0TYgw==",
                     data: JSON.stringify({
                         "name": $("#txtName").val(),
-
-                    }),
-                    dataType: "json",
-                    success: function (response) {
-                        $("#message").text(response)
+                    }),                   
+                    success: function (response) {                   
+                        $("#message").text(response);
                     },
             })        
             });         
