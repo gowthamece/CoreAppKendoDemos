@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyCoreAPI.Model;
+using System;
+using System.Collections.Generic;
 
 
 namespace MyCoreAPI.Controllers
@@ -19,9 +16,12 @@ namespace MyCoreAPI.Controllers
         {
             try
             {
-                List<Product> products = new List<Product>();
-                products.Add(new Product(1, "Tea pack", 100, 10));
-                products.Add(new Product(2, "Coffee pack", 120, 12));
+                List<Product> products = new List<Product>
+                {
+                    new Product(1, "Tea pack", 100, 10,"Sku100","100","100","100","100","100","100","100","100","100","100"),
+                    new Product(2, "Coffee pack", 120, 12,"Sku101","100","100","100","100","100","100","100","100","100","100"),
+                };
+               
                 return products;
             }
             catch (Exception ex)

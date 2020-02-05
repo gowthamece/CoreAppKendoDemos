@@ -1,0 +1,125 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.default-v2.min.css" />
+    <script src="https://kendo.cdn.telerik.com/2020.1.114/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.1.114/js/kendo.all.min.js"></script>
+</head>
+<body>
+    <div id="example">
+        <div id="grid"></div>
+        <script>
+        $(document).ready(function () {
+            $("#grid").kendoGrid({
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: "http://localhost:11207/api/Products/ProductDetails"
+                    },
+                    
+                },
+                scrollable: {
+                   virtual: "columns"
+                },
+                navigatable: true,
+               filterable: true,
+               columnMenu: true,
+                width: 1000,
+                pageable: {
+                   refresh: true,
+                   pageSize: 2,
+                   pageSizes: true,
+                   buttonCount: 2
+               },
+                toolbar: ["search"],
+                columns: [{
+                    field: "productID",
+                    title: "Product ID",
+                    width: 200
+                        },
+                    {
+                    field: "productName",
+                        title: "Name",
+                    width: 200
+                    },
+                    {
+                    field: "price",
+                        title: "Price",
+                    width: 200
+                    },
+                    {
+                    field: "tax",
+                        title: "Tax",
+                    width: 200
+                    },
+                    {
+                    field: "skuCode",
+                        title: "SkuCode",
+                    width: 200
+                    },
+                    {
+                    field: "price1",
+                        title: "Price1",
+                    width: 200
+                    },
+                    {
+                    field: "price2",
+                        title: "Price2",
+                    width: 200
+                    },
+                    {
+                    field: "price3",
+                        title: "Price3",
+                    width: 200
+                    },
+                    {
+                    field: "price4",
+                        title: "Price4",
+                    width: 200
+                    },
+                      {
+                    field: "price5",
+                          title: "Price5",
+                    width: 200
+                    },
+                         {
+                    field: "price6",
+                        title: "Price6",
+                    width: 200
+                    },
+                    {
+                    field: "price7",
+                        title: "Price7",
+                    width: 200
+                    },
+                    {
+                    field: "price8",
+                        title: "Price8",
+                    width: 200
+                    },
+                    {
+                    field: "price9",
+                        title: "Price9",
+                    width: 200
+                    },
+                      {
+                    field: "price10",
+                          title: "Price10",
+                    width: 200
+                    }
+
+                ]
+            });
+        });
+        </script>
+    </div>
+</body>
+</html>

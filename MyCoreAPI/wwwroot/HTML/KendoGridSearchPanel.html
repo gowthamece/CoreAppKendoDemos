@@ -1,0 +1,43 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>   
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.1023/styles/kendo.default-v2.min.css" />
+    <script src="https://kendo.cdn.telerik.com/2019.3.1023/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2019.3.1023/js/kendo.all.min.js"></script>
+</head>
+<body>
+    <div id="example">
+        <div id="grid"></div>
+        <script>
+        $(document).ready(function () {
+            $("#grid").kendoGrid({
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: "http://localhost:11207/api/Employees/EmpList"
+                    },
+                    pageSize: 20
+                },
+                height: 550,
+                toolbar: ["search"],             
+                columns: [{                   
+                    field: "employeeId",
+                    title: "Employee ID",                   
+                }, {
+                    field: "name",
+                    title: "Name"
+                },]
+            });
+        });
+        </script>
+    </div>
+</body>
+</html>

@@ -12,7 +12,20 @@
     <button id="btnName">Click Me</button>
     <label id="message" style="color:green"></label>
     <script>
+        function myConstructorFucn() {
+           // this.name = "David";           
+        }
+        myConstructorFucn.prototype.age = 25;
+        var consFunc = new myConstructorFucn()
+        console.log(typeof consFunc)
+        console.log(consFunc);
+      //  console.log(consFunc.y)
+
         $(document).ready(function () {
+          
+           
+           
+
             $("#btnName").on("click", function () {
                 $.ajax({
                     type: "POST",
